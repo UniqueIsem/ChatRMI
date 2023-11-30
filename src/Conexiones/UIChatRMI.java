@@ -1,5 +1,7 @@
 package Conexiones;
 
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import java.util.logging.Level;
@@ -22,6 +24,23 @@ public class UIChatRMI extends javax.swing.JFrame {
         btnSendPrivMsg.setEnabled(false);
         txtAreaChat.setEnabled(false);
         txtMsg.setEnabled(false);
+        
+        txtMsg.addKeyListener(new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+            }
+            @Override
+            public void keyPressed(KeyEvent e) {
+                // Verifica si la tecla presionada es Enter
+                if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+                    btnSendGroupMsg.doClick();
+                }
+            }
+            @Override
+            public void keyReleased(KeyEvent e) {
+            }
+        });
+        
     }
 
     @SuppressWarnings("unchecked")
